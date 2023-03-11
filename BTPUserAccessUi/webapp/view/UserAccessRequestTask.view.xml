@@ -1,0 +1,130 @@
+<mvc:View controllerName="com.sap.bmi.BTPUserAccessUi.controller.UserAccessRequestTask"
+      xmlns:mvc="sap.ui.core.mvc" 
+      displayBlock="true" 
+      xmlns="sap.m" 
+      xmlns:l="sap.ui.layout" 
+      xmlns:core="sap.ui.core" 
+      xmlns:m="sap.m" 
+      xmlns:u="sap.uxap"
+      xmlns:f="sap.ui.layout.form" 
+      height="100%">
+
+    <u:ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true">
+        <u:headerTitle>
+            <u:ObjectPageDynamicHeaderTitle>
+                <u:expandedHeading>
+                    <HBox>
+                        <Title text="Title 1"/>
+                        <Title text="Title 2"/>
+                    </HBox>
+                </u:expandedHeading>
+            </u:ObjectPageDynamicHeaderTitle>
+        </u:headerTitle>
+        <u:sections>
+            <u:ObjectPageSection titleUppercase="false" title="User Access Request">
+                <u:subSections>
+                    <u:ObjectPageSubSection titleUppercase="false" title="User Personal Information">
+                        <u:blocks>
+                            <f:SimpleForm editable="true" maxContainerCols="2" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label text="Salutation" width="100%"/>
+                                    <Input value="{context>/honorificPrefix}" enabled="false"/>
+                                    
+                                    <Label text="First Name" width="100%"/>
+                                    <Input value="{context>/familyName}" enabled="false"/>
+                                    
+                                    <Label text="Last Name" width="100%"/>
+                                    <Input value="{context>/givenName}" enabled="false"/>
+
+                                    <Label text="E-Mail" width="100%"/>
+                                    <Input value="{context>/email}" enabled="false"/>
+
+                                    <Label text="Phone" width="100%"/>
+                                    <Input value="{context>/phoneNumber}" enabled="false"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </u:blocks>
+                    </u:ObjectPageSubSection>
+                    
+                    <u:ObjectPageSubSection titleUppercase="false" title="User Company Information">
+                        <u:blocks>
+                            <f:SimpleForm editable="true" maxContainerCols="2" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label text="Company Name" width="100%"/>
+                                    <Input value="{context>/organization}" enabled="false"/>
+                                    
+                                    <Label text="Address" width="100%"/>
+                                    <TextArea value="{context>/fullAddress}" cols="50" rows="6" enabled="false"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </u:blocks>
+                    </u:ObjectPageSubSection>
+
+                    <u:ObjectPageSubSection titleUppercase="false" title="Relationship to BMI">
+                        <u:blocks>
+                            <f:SimpleForm editable="true" maxContainerCols="2" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label text="Relationship" width="100%"/>
+                                    <Input value="{context>/iasUserResponse/companyRelationship}" enabled="false"/>
+                                    
+                                    <Label text="Job Function" width="100%"/>
+                                    <Input value="" enabled="false"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </u:blocks>
+                    </u:ObjectPageSubSection>
+                </u:subSections>
+            </u:ObjectPageSection>
+
+            <u:ObjectPageSection titleUppercase="false" title="User Access Decision">
+                <u:subSections>
+                    <u:ObjectPageSubSection titleUppercase="false" title="User Details">
+                        <u:blocks>
+                            <f:SimpleForm editable="true" maxContainerCols="2" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label text="Login Name" width="100%" required="true"/>
+                                    <Input value="{context>/userName}"/>
+
+                                    <Label text="Display Name" width="100%" required="true"/>
+                                    <Input value="{context>/displayName}"/>                                
+                                </f:content>
+                            </f:SimpleForm>
+                        </u:blocks>
+                    </u:ObjectPageSubSection>
+                    
+                    <u:ObjectPageSubSection titleUppercase="false" title="User-Customer Mapping">
+                        <u:blocks>
+                            <f:SimpleForm editable="true" maxContainerCols="2" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Table id="CustomerTable" items="{customers>/}" width="50%" mode="MultiSelect"  multiSelectMode="SelectAll">
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+									            <content>
+                                                    <Button icon="sap-icon://add" text="Add" press="onInsertRow" class="sapUiTinyMarginBegin"/>
+                                                    <Button icon="sap-icon://delete" text="Remove" press="onDeleteRow" class="sapUiTinyMarginBegin"/>
+                                                    <ToolbarSpacer />
+                                                </content>
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column minScreenWidth="Tablet" demandPopin="true">  <Text text="Customer ID"/>        </Column>
+                                            <Column minScreenWidth="Tablet" demandPopin="true">  <Text text="Sales Organisation"/> </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem vAlign="Middle">
+                                                <cells>    
+                                                    <Input value="{customers>CustomerId}"/>
+                                                    <Input value="{customers>SalesOrg}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items> 
+                                    </Table>
+                                </f:content>
+                            </f:SimpleForm>
+                        </u:blocks> 
+                    </u:ObjectPageSubSection>
+                </u:subSections>
+            </u:ObjectPageSection>
+        </u:sections>
+    </u:ObjectPageLayout>
+</mvc:View>

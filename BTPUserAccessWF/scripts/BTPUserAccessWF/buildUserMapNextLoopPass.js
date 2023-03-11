@@ -1,0 +1,1 @@
+$.context.UserMapCurrentIndex = parseInt($.context.UserMapCurrentIndex) + 1;
