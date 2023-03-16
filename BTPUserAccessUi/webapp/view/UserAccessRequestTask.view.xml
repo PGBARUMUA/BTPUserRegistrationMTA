@@ -31,10 +31,10 @@
                                     <Input value="{context>/honorificPrefix}" enabled="false"/>
                                     
                                     <Label text="First Name" width="100%"/>
-                                    <Input value="{context>/familyName}" enabled="false"/>
+                                    <Input value="{context>/givenName}" enabled="false"/>
                                     
                                     <Label text="Last Name" width="100%"/>
-                                    <Input value="{context>/givenName}" enabled="false"/>
+                                    <Input value="{context>/familyName}" enabled="false"/>
 
                                     <Label text="E-Mail" width="100%"/>
                                     <Input value="{context>/email}" enabled="false"/>
@@ -76,7 +76,7 @@
                 </u:subSections>
             </u:ObjectPageSection>
 
-            <u:ObjectPageSection titleUppercase="false" title="User Access Decision">
+            <u:ObjectPageSection titleUppercase="false" title="Approver Decision">
                 <u:subSections>
                     <u:ObjectPageSubSection titleUppercase="false" title="User Details">
                         <u:blocks>
@@ -86,7 +86,10 @@
                                     <Input value="{context>/userName}"/>
 
                                     <Label text="Display Name" width="100%" required="true"/>
-                                    <Input value="{context>/displayName}"/>                                
+                                    <Input value="{context>/displayName}"/>  
+
+                                    <Label text="Approver Comments" width="100%" required="true" />
+                                    <TextArea text="{context>/approverComments}" />                             
                                 </f:content>
                             </f:SimpleForm>
                         </u:blocks>

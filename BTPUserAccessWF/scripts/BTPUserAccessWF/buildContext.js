@@ -2,7 +2,7 @@ var vFullAddress="";
 
 
 $.context.workflowInstanceId = $.info.workflowInstanceId;
-$.context.displayName = $.context.honorificPrefix + " " + $.context.familyName + " " + $.context.givenName;
+$.context.displayName = $.context.honorificPrefix + " " + $.context.givenName + " " + $.context.familyName;
 $.context.userName = $.context.email;
 
 if($.context.streetAddress != null){
@@ -46,3 +46,6 @@ $.context.fullAddress = vFullAddress;
 
 $.context.iasUserRequest = '/service/scim/Users/' + $.context.userId;
 $.context.customers = [];
+$.context.approverComments = "";
+
+$.context.emails = { "userApproved": "", "userRejected":""};

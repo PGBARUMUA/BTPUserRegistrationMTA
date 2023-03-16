@@ -16,7 +16,7 @@
       "authenticationType": "xsuaa"
     },
     {
-      "authenticationType": "none",
+      "authenticationType": "xsuaa",
       "csrfProtection": false,
       "source": "^/cpi/(.*)$",
       "target": "$1",

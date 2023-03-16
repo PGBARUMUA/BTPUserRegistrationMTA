@@ -61,7 +61,7 @@ sap.ui.define(
 
         getCustomers: function(vValue){
           if(vValue){
-            var vURL = '/BMIBTPUserRegistration.comsapbmiBTPUserAccessUi-0.0.1/cpi/http/S4/BPCustomer';
+            var vURL = this._getCPIRuntimeBaseURL();
             $.ajax({
                 url: vURL,
                 type: "GET",
@@ -107,6 +107,14 @@ sap.ui.define(
         _getTaskInstancesBaseURL: function () {
           return ( this._getWorkflowRuntimeBaseURL() + "/task-instances/" + this.getTaskInstanceID() );
         },
+
+        _getCPIRuntimeBaseURL: function () {
+          var appId = this.getManifestEntry("/sap.app/id");
+          var appPath = appId.replaceAll(".", "/");
+          var appModulePath = jQuery.sap.getModulePath(appPath);
+
+          return appModulePath + "/cpi/http/S4/BPCustomer";
+      },
 
         _getWorkflowRuntimeBaseURL: function () {
           var appId = this.getManifestEntry("/sap.app/id");
